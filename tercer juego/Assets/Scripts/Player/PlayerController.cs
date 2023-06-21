@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(DispararContinuo());
         }
@@ -31,20 +31,18 @@ public class PlayerController : MonoBehaviour
         {
             DetenerDisparoContinuo();
         }
-    
     }
 
-   void FixedUpdate()
-{
-    movimientoHorizontal = Input.GetAxisRaw("Horizontal");
-    movimientoVertical = Input.GetAxisRaw("Vertical");
+    void FixedUpdate()
+    {
+        movimientoHorizontal = Input.GetAxisRaw("Horizontal");
+        movimientoVertical = Input.GetAxisRaw("Vertical");
     
-    
-    Vector2 movimiento = new Vector2(movimientoHorizontal, movimientoVertical).normalized;
-    rb.velocity = movimiento * velocidadMovimiento;
-}
+        Vector2 movimiento = new Vector2(movimientoHorizontal, movimientoVertical).normalized;
+        rb.velocity = movimiento * velocidadMovimiento;
+    }
 
-IEnumerator DispararContinuo()
+    IEnumerator DispararContinuo()
     {
         while (Input.GetKey(KeyCode.Space))
         {
@@ -69,6 +67,4 @@ IEnumerator DispararContinuo()
     {
         StopAllCoroutines();
     }
-
-
 }

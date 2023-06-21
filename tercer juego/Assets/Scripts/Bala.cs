@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bala : MonoBehaviour
-{ 
+{
     public float tiempoVida = 2f; // Tiempo en segundos antes de que la bala se autodestruya
+    public int damageAmount = 10; // Cantidad de daño que causa la bala
 
     void Start()
     {
@@ -14,9 +13,13 @@ public class Bala : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Verificar si la bala ha colisionado con otro objeto
-        // Aquí puedes agregar la lógica que deseas cuando la bala colisiona con algo
-        // Por ejemplo, si quieres que la bala desaparezca al colisionar, puedes usar Destroy(gameObject);
+        // Obtener una referencia al componente Enemy del objeto con el que colisionó la bala
+        EnemyHealth enemy = other.GetComponent<EnemyHealth>();
+        if (enemy != null)
+        {
+            // Si el objeto tiene el componente Enemy, le hace daño llamando al método TakeDamage
+            enemy.TakeDamage(damageAmount);
+            Destroy(gameObject); // Destruir la bala al impactar
+        }
     }
 }
-
