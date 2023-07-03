@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     public GameObject balaPrefab;
     public Transform puntoDisparo;
     
-    private float movimientoHorizontal= 0f;
-    private float movimientoVertical= 0f;
+    private float movimientoHorizontal = 0f;
+    private float movimientoVertical = 0f;
     private Rigidbody2D rb;
     private bool puedeDisparar = true;
 
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         while (Input.GetKey(KeyCode.Space))
         {
-            if (puedeDisparar)
+            if (puedeDisparar && Time.timeScale > 0f)
             {
                 GameObject bala = Instantiate(balaPrefab, puntoDisparo.position, puntoDisparo.rotation);
                 Rigidbody2D rbBala = bala.GetComponent<Rigidbody2D>();
