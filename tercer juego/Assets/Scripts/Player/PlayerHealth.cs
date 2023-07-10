@@ -2,21 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Vida del jugador y inmunidad")]
     public int maxHealth = 100;
     public int currentHealth;
     public float immunityDuration = 2f; // Duración de la inmunidad en segundos
     private bool isImmune = false; // Indicador de inmunidad
-
+    [Header("Damage del jugador y Pantalla de muerte")]
     public GameObject gameOverMenu;
     public SpriteRenderer spriteRenderer;
     public float blinkInterval = 0.1f; // Intervalo de parpadeo en segundos
+    [Header("Imagenes de la vida del jugador")]
+    public Image[] healthImages;
 
     private void Start()
     {
         currentHealth = maxHealth;
+
+        for (int i = 0; i < healthImages.Length; i++)
+        {
+            healthImages[i].enabled = true;
+        }
     }
 
     public void TakeDamage(int damageAmount)
@@ -36,16 +45,22 @@ public class PlayerHealth : MonoBehaviour
         {
             StartImmunity(); // Iniciar período de inmunidad si el personaje aún está vivo
             StartCoroutine(BlinkSprite()); // Iniciar la corrutina de parpadeo del sprite
+            AudioManager.Instance.PlaySFX("Hit1");
+            int healthSegmentIndex = currentHealth / (maxHealth/healthImages.Length);
+            healthImages[healthSegmentIndex].enabled = false;
         }
 
         Debug.Log("Player took damage: " + damageAmount); // Depuración para verificar si se está llamando al método
     }
 
-    private void Die()
+    public void Die()
     {
         // Aquí puedes implementar la lógica de lo que sucede cuando el personaje muere
         Time.timeScale = 0f; // Pausar el juego
+        AudioManager.Instance.musicSource.Stop();
         gameOverMenu.SetActive(true); // Mostrar el menú de Game Over
+        AudioManager.Instance.musicSource.Play();
+        AudioManager.Instance.PlayMusic("GameOverTheme");
     }
 
     private void StartImmunity()

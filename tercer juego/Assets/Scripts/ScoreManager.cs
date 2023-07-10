@@ -37,4 +37,15 @@ public class ScoreManager : MonoBehaviour
         }
         
     }
+
+    public void AddPointBoss()
+    {
+        score+=2000;
+        scoreText.text = score.ToString();
+        if(highscore<score)
+        {
+            PlayerPrefs.SetInt("highscore" , score);
+        }
+        
+    }
 }

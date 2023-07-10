@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(DispararContinuo());
+            
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
                 GameObject bala = Instantiate(balaPrefab, puntoDisparo.position, puntoDisparo.rotation);
                 Rigidbody2D rbBala = bala.GetComponent<Rigidbody2D>();
                 rbBala.velocity = puntoDisparo.up * velocidadDisparo;
-
+                AudioManager.Instance.PlaySFX("LaserShoot");
                 Destroy(bala, 2f); // Destruir la bala después de un tiempo
 
                 yield return new WaitForSeconds(0.1f); // Esperar un pequeño intervalo entre cada disparo

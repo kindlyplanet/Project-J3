@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 51907844}
   - component: {fileID: 51907843}
   - component: {fileID: 51907842}
+  - component: {fileID: 51907845}
   m_Layer: 5
   m_Name: Back to Menu Button
   m_TagString: Untagged
@@ -257,6 +258,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51907840}
   m_CullTransparentMesh: 1
+--- !u!114 &51907845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51907840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1302645796}
+          m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+          m_MethodName: PlaySFX
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Select
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &113560437
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,12 +434,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Designed by :   Francisco L\xF3pez\n\nArt by :  Francisco L\xF3pez\n\nSound
-    by:  Francisco L\xF3pez\n\nProgrammed by : ChatGpt and Francisco L\xF3pez\n\nSoftware
+  m_text: "Credits\n\nDesigned by :   Francisco L\xF3pez\n\nArt by :  Francisco L\xF3pez\n\nMusic
+    by : Eric Matyas\n\nSFX by:  Francisco L\xF3pez\n\nProgrammed by : ChatGpt ,
+    Francisco L\xF3pez and help from Felipez Dumont\n\nFont by : Chequered Ink\n\nSoftware
     used : Asesprite , Bfrx and Audiocity "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 562d59664137737448eaba75c0672c74, type: 2}
+  m_sharedMaterial: {fileID: -661123399385840860, guid: 562d59664137737448eaba75c0672c74, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -469,7 +500,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -152.33618, y: 0, z: -526.67615, w: 0}
+  m_margin: {x: -152.33618, y: 0, z: -972.1196, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -543,7 +574,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back To Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 562d59664137737448eaba75c0672c74, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -607,7 +638,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1046984448
@@ -618,6 +649,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046984445}
   m_CullTransparentMesh: 1
+--- !u!1001 &1302645795
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7523003412276095105, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_Name
+      value: Audio Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095110, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: selectMusic
+      value: CreditTheme
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095110, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: musicSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095110, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: musicSounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 17c61cf3cc141ce408fa1c9d62138ef8, type: 3}
+    - target: {fileID: 7523003412276095110, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: musicSounds.Array.data[3].name
+      value: CreditTheme
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.8369703
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 101.656555
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.19574708
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523003412276095111, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+--- !u!114 &1302645796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7523003412276095110, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
+  m_PrefabInstance: {fileID: 1302645795}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ce2d561826b23409aa8d026b630ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1613006434
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +1034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1492}
+  m_AnchoredPosition: {x: 0, y: -1755}
   m_SizeDelta: {x: 617.8544, y: 158.2009}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1892018647
@@ -944,8 +1059,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Thank you For Playing
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 562d59664137737448eaba75c0672c74, type: 2}
+  m_sharedMaterial: {fileID: -661123399385840860, guid: 562d59664137737448eaba75c0672c74, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

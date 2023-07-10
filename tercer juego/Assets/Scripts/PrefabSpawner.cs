@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PrefabSpawner : MonoBehaviour
@@ -29,5 +27,10 @@ public class PrefabSpawner : MonoBehaviour
             // Reiniciar el temporizador
             spawnTimer = spawnInterval;
         }
+    }
+
+    public void Deactivate()
+    {
+        enabled = false;
     }
 }

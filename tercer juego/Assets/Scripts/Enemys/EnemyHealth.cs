@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             StartCoroutine(ChangeColorTemporarily(damageColor, damageColorDuration));
-
+            AudioManager.Instance.PlaySFX("Hit2");
             Debug.Log("Enemy took damage: " + damageAmount);
         }
     }
@@ -48,6 +48,7 @@ public class EnemyHealth : MonoBehaviour
     {
         // Implementa aquí la lógica para el comportamiento de muerte del enemigo
         // Por ejemplo, reproducir una animación, otorgar puntos al jugador, etc.
+        AudioManager.Instance.PlaySFX("Explosion1");
         ScoreManager.instance.AddPoint();
         Destroy(gameObject);
     }

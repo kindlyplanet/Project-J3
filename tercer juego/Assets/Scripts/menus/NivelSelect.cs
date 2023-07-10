@@ -8,5 +8,10 @@ public class NivelSelect : MonoBehaviour
     public void SelecionDeNivel(int levelnum)
     {
         SceneManager.LoadScene(levelnum);
+        
+        if(levelnum == 1)
+        {
+            AudioManager.Instance.PlayMusic("StageTheme");
+        }
     }
 }

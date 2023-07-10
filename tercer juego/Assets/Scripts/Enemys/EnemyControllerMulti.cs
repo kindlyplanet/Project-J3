@@ -4,32 +4,56 @@ using UnityEngine;
 
 public class EnemyControllerMulti : MonoBehaviour
 {
-    public Transform startPoint;  // Punto inicial del enemigo
-    public List<Transform> nextPoint;    // Punto final del enemigo
-    public int current = 0;
+    public Transform startPoint;           // Punto inicial del enemigo
+    public List<Transform> nextPointObjects;     // Lista de objetos que representan los puntos de destino del enemigo
     public float velocidadMovimiento = 5f;
 
-    void Start()
+    private List<Vector3> nextPoints;      // Lista de puntos de destino en tiempo de ejecución
+    private int currentPointIndex = 0;     // Índice del punto de destino actual
+
+    private void Start()
     {
         // Posicionar al enemigo en el punto inicial
         transform.position = startPoint.position;
+
+        // Inicializar la lista de puntos de destino en tiempo de ejecución
+        nextPoints = new List<Vector3>();
+
+        // Obtener las posiciones de los puntos de destino en tiempo de ejecución
+        foreach (Transform pointObject in nextPointObjects)
+        {
+            nextPoints.Add(pointObject.position);
+        }
     }
 
-    void Update()
+    private void Update()
     {
+        // Verificar si hay puntos de destino disponibles
+        if (nextPoints.Count == 0)
+        {
+            Debug.LogWarning("No se han definido puntos de destino para el enemigo.");
+            return;
+        }
+
+        // Obtener el punto de destino actual
+        Vector3 currentPoint = nextPoints[currentPointIndex];
+
         // Calcular la distancia que el enemigo debe moverse en este cuadro
         float distanciaMovimiento = velocidadMovimiento * Time.deltaTime;
 
-        // Mover al enemigo hacia el punto final
-        transform.position = Vector3.MoveTowards(transform.position, nextPoint[current].position, distanciaMovimiento);
-        float distancia = Vector3.Distance(this.transform.position, nextPoint[current].position);
+        // Mover al enemigo hacia el punto de destino actual
+        transform.position = Vector3.MoveTowards(transform.position, currentPoint, distanciaMovimiento);
 
-        if (distancia < 0.1f)
+        // Verificar si el enemigo ha alcanzado el punto de destino actual
+        if (Vector3.Distance(transform.position, currentPoint) < 0.1f)
         {
-            current += 1;
-            if (current >= nextPoint.Count)
+            // Incrementar el índice del punto de destino
+            currentPointIndex++;
+
+            // Verificar si se ha alcanzado el último punto de destino
+            if (currentPointIndex >= nextPoints.Count)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
     }

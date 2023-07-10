@@ -11,10 +11,14 @@ public class ObjectActivation : MonoBehaviour
     private bool isActive = false;
     private int currentIndex = 0;
 
+    private PrefabSpawner[] spawners;
+
     private void Start()
     {
         activationTimer = delayBeforeActivation;
         deactivationTimer = durationOfActivation;
+
+        spawners = FindObjectsOfType<PrefabSpawner>(); // Obtén todas las referencias a los spawners en la escena
     }
 
     private void Update()
@@ -61,5 +65,11 @@ public class ObjectActivation : MonoBehaviour
     {
         objectsToActivate[currentIndex].SetActive(false);
         isActive = false;
+
+        // Desactivar los spawners
+        foreach (PrefabSpawner spawner in spawners)
+        {
+            spawner.Deactivate();
+        }
     }
 }

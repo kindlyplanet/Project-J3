@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6706919458347164182}
   - component: {fileID: 6706919458347164183}
   - component: {fileID: -2765434158008587432}
-  m_Layer: 0
+  - component: {fileID: -8161466196073631964}
+  m_Layer: 2
   m_Name: Bala E_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &-2765434158008587432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,3 +134,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-8161466196073631964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6706919458347164180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5e85c319dc7ba46947555da3fd8dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  damage: 10
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 4
+  lifeDuration: 5
