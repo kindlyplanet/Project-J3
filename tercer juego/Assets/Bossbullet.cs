@@ -21,20 +21,18 @@ public class Bossbullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       if(collision.CompareTag("Bullet")) 
-       {
-         return;
-       }
-       
-       
+        if (collision.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+
         PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
             playerHealth.TakeDamage(damage);
         }
-
-        Destroy(gameObject);
     }
+
 
     IEnumerator DestroyBullet()
     {

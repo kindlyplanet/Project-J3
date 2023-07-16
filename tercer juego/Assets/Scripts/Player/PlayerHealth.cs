@@ -4,23 +4,31 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class VidaRelated
+{
+    public int maxHealth = 50;
+    public int currentHealth;
+    public float immunityDuration = 2f; // Duración de la inmunidad en segundos
+    [HideInInspector] public bool isImmune = false; // Indicador de inmunidad
+}
+
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Vida del jugador y inmunidad")]
-    public int maxHealth = 100;
-    public int currentHealth;
-    public float immunityDuration = 2f; // Duración de la inmunidad en segundos
-    private bool isImmune = false; // Indicador de inmunidad
+    [SerializeField] private VidaRelated vidaEInmunidad;
+
     [Header("Damage del jugador y Pantalla de muerte")]
     public GameObject gameOverMenu;
     public SpriteRenderer spriteRenderer;
     public float blinkInterval = 0.1f; // Intervalo de parpadeo en segundos
+
     [Header("Imagenes de la vida del jugador")]
     public Image[] healthImages;
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        vidaEInmunidad.currentHealth = vidaEInmunidad.maxHealth;
 
         for (int i = 0; i < healthImages.Length; i++)
         {
@@ -30,14 +38,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if (isImmune)
+        if (vidaEInmunidad.isImmune)
         {
             return; // Si el personaje está en período de inmunidad, no recibe daño adicional
         }
 
-        currentHealth -= damageAmount;
+        vidaEInmunidad.currentHealth -= damageAmount;
 
-        if (currentHealth <= 0)
+        if (vidaEInmunidad.currentHealth <= 0)
         {
             Die();
         }
@@ -46,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
             StartImmunity(); // Iniciar período de inmunidad si el personaje aún está vivo
             StartCoroutine(BlinkSprite()); // Iniciar la corrutina de parpadeo del sprite
             AudioManager.Instance.PlaySFX("Hit1");
-            int healthSegmentIndex = currentHealth / (maxHealth/healthImages.Length);
+            int healthSegmentIndex = vidaEInmunidad.currentHealth / (vidaEInmunidad.maxHealth / healthImages.Length);
             healthImages[healthSegmentIndex].enabled = false;
         }
 
@@ -65,19 +73,19 @@ public class PlayerHealth : MonoBehaviour
 
     private void StartImmunity()
     {
-        isImmune = true;
-        Invoke("EndImmunity", immunityDuration); // Llamar al método EndImmunity después de la duración de inmunidad
+        vidaEInmunidad.isImmune = true;
+        Invoke("EndImmunity", vidaEInmunidad.immunityDuration); // Llamar al método EndImmunity después de la duración de inmunidad
     }
 
     private void EndImmunity()
     {
-        isImmune = false;
+        vidaEInmunidad.isImmune = false;
         spriteRenderer.enabled = true; // Asegurarse de que el sprite esté activado al final de la inmunidad
     }
 
     private IEnumerator BlinkSprite()
     {
-        while (isImmune)
+        while (vidaEInmunidad.isImmune)
         {
             spriteRenderer.enabled = !spriteRenderer.enabled; // Alternar la visibilidad del sprite
 

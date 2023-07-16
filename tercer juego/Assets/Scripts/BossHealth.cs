@@ -7,6 +7,7 @@ public class BossHealth : MonoBehaviour
 {
    public int maxHealth = 100;
    public int currentHealth;
+   public string nextLvl; 
    
    public void Start() 
    {
@@ -27,7 +28,7 @@ public class BossHealth : MonoBehaviour
     {
         ScoreManager.instance.AddPointBoss();
         Destroy(gameObject);
-        SceneManager.LoadScene("Creditos");   
+        SceneManager.LoadScene(nextLvl);   
     }
 
 }

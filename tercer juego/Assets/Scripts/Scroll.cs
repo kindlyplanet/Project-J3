@@ -7,14 +7,15 @@ public class Scroll : MonoBehaviour
     public Vector2 posicionDestino;
     public float distanciaUmbral = 0.01f;
 
-    private ObjectActivation objectActivation;
+    private ObjectActivation[] objectActivations; // Cambio: Array de ObjectActivation
+
     private PrefabSpawner[] spawners;
 
     private bool haLlegadoAlDestino = false;
 
     void Start()
     {
-        objectActivation = GetComponent<ObjectActivation>(); // Obtén el componente ObjectActivation del objeto
+        objectActivations = GetComponentsInChildren<ObjectActivation>(); // Cambio: Obtén todos los componentes ObjectActivation
         spawners = FindObjectsOfType<PrefabSpawner>(); // Obtén todas las referencias a los spawners en la escena
     }
 
@@ -37,8 +38,8 @@ public class Scroll : MonoBehaviour
                 spawner.enabled = false;
             }
 
-            // Desactiva el componente ObjectActivation
-            if (objectActivation != null)
+            // Desactiva todos los componentes ObjectActivation
+            foreach (ObjectActivation objectActivation in objectActivations)
             {
                 objectActivation.enabled = false;
             }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Velocidad de la nave")]
     public float velocidadMovimiento = 5f;
+    [Header("Disparo del bala")]
     public float velocidadDisparo = 10f;
     public GameObject balaPrefab;
     public Transform puntoDisparo;
