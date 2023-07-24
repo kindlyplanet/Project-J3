@@ -404,7 +404,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -443,6 +443,7 @@ MonoBehaviour:
   maxHealth: 30
   damageColor: {r: 0.9716981, g: 0.022917405, b: 0.022917405, a: 1}
   damageColorDuration: 0.2
+  prefabToSpawn: {fileID: 2359591337272216213, guid: b35662e7313584f4eb871808f8736e54, type: 3}
 --- !u!114 &4844655686838802525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,7 +564,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -602,6 +603,7 @@ MonoBehaviour:
   maxHealth: 30
   damageColor: {r: 0.9716981, g: 0.022917405, b: 0.022917405, a: 1}
   damageColorDuration: 0.2
+  prefabToSpawn: {fileID: 2359591337272216213, guid: b35662e7313584f4eb871808f8736e54, type: 3}
 --- !u!114 &2301571516857028328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,7 +724,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -761,6 +763,7 @@ MonoBehaviour:
   maxHealth: 30
   damageColor: {r: 0.9716981, g: 0.022917405, b: 0.022917405, a: 1}
   damageColorDuration: 0.2
+  prefabToSpawn: {fileID: 2359591337272216213, guid: b35662e7313584f4eb871808f8736e54, type: 3}
 --- !u!114 &3297873312974572315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,7 +884,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -920,6 +923,7 @@ MonoBehaviour:
   maxHealth: 30
   damageColor: {r: 0.9716981, g: 0.022917405, b: 0.022917405, a: 1}
   damageColorDuration: 0.2
+  prefabToSpawn: {fileID: 2359591337272216213, guid: b35662e7313584f4eb871808f8736e54, type: 3}
 --- !u!114 &4677885950091913799
 MonoBehaviour:
   m_ObjectHideFlags: 0

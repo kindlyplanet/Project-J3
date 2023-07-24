@@ -25,19 +25,20 @@ public class EnemyShooter : MonoBehaviour
     }
 
     private void FireProjectile()
-    {
-        // Instanciar el proyectil en el punto de disparo
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+{
+    // Instanciar el proyectil en el punto de disparo
+    GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
-        // Obtener el componente Rigidbody2D del proyectil
-        Rigidbody2D projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
+    // Obtener el componente EnemyProjectile del proyectil
+    EnemyProjectile enemyProjectile = projectile.GetComponent<EnemyProjectile>();
 
-        // Obtener la dirección hacia el jugador
-        Vector2 directionToPlayer = GetDirectionToPlayer();
+    // Obtener la dirección hacia el jugador
+    Vector2 directionToPlayer = GetDirectionToPlayer();
 
-        // Establecer la velocidad del proyectil en la dirección hacia el jugador
-        projectileRigidbody.velocity = directionToPlayer * projectileSpeed;
-    }
+    // Establecer la dirección del proyectil
+    enemyProjectile.SetDirection(directionToPlayer);
+}
+
 
     private Vector2 GetDirectionToPlayer()
     {

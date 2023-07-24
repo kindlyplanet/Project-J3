@@ -177,6 +177,7 @@ MonoBehaviour:
   maxHealth: 30
   damageColor: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
   damageColorDuration: 0.2
+  prefabToSpawn: {fileID: 2359591337272216213, guid: b35662e7313584f4eb871808f8736e54, type: 3}
 --- !u!114 &7135890007354829389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +337,7 @@ MonoBehaviour:
   maxHealth: 30
   damageColor: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
   damageColorDuration: 0.2
+  prefabToSpawn: {fileID: 2359591337272216213, guid: b35662e7313584f4eb871808f8736e54, type: 3}
 --- !u!114 &1813684733492143172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,6 +497,7 @@ MonoBehaviour:
   maxHealth: 30
   damageColor: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
   damageColorDuration: 0.2
+  prefabToSpawn: {fileID: 2359591337272216213, guid: b35662e7313584f4eb871808f8736e54, type: 3}
 --- !u!114 &3589213623213296575
 MonoBehaviour:
   m_ObjectHideFlags: 0

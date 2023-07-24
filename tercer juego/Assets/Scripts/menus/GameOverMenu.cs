@@ -6,6 +6,13 @@ public class GameOverMenu : MonoBehaviour
     public GameObject gameOverMenu;
     private bool isGameOver = false;
     
+    private ScoreManager scoreManager;
+
+    private void Start()
+    {
+        scoreManager = ScoreManager.instance;
+    }
+   
     private void Update()
     {
         if (isGameOver && Input.GetKeyDown(KeyCode.R))
@@ -24,6 +31,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void RestartLevel()
     {
+        scoreManager.ResetScore();
         Time.timeScale = 1f; // Restablece el tiempo a la normalidad
         AudioManager.Instance.PlayMusic("StageTheme");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reinicia la escena actual

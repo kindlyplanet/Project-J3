@@ -7,12 +7,14 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
 
+    private ScoreManager scoreManager;
+
     private bool isPaused = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        scoreManager = ScoreManager.instance;
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        scoreManager.ResetScore();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu Principal");
     }

@@ -11,12 +11,15 @@ public class EnemyHealth : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public GameObject prefabToSpawn;
+    
     private void Start()
     {
         currentHealth = maxHealth;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         normalColor = spriteRenderer.color;
+
     }
 
     public void TakeDamage(int damageAmount)
@@ -50,6 +53,8 @@ public class EnemyHealth : MonoBehaviour
         // Por ejemplo, reproducir una animación, otorgar puntos al jugador, etc.
         AudioManager.Instance.PlaySFX("Explosion1");
         ScoreManager.instance.AddPoint();
+        Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
+
 }

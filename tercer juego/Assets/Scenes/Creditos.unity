@@ -671,7 +671,7 @@ PrefabInstance:
     - target: {fileID: 7523003412276095110, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
       propertyPath: musicSounds.Array.data[3].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 17c61cf3cc141ce408fa1c9d62138ef8, type: 3}
+      objectReference: {fileID: 8300000, guid: fb8e45dde969b594dbbd1e0ac6574f3c, type: 3}
     - target: {fileID: 7523003412276095110, guid: 43b5252a5221b6349a6363b315c954db, type: 3}
       propertyPath: musicSounds.Array.data[3].name
       value: CreditTheme
@@ -895,7 +895,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1755295899
 RectTransform:
