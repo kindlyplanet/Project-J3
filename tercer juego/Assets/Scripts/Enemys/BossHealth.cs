@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class BossHealth : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class BossHealth : MonoBehaviour
 
    private SpriteRenderer spriteRenderer;
    
-   public string nextLvl; 
+   public UnityEvent actionToDie; 
    
    public void Start() 
    {
@@ -62,7 +63,7 @@ public class BossHealth : MonoBehaviour
     {
         ScoreManager.instance.AddPointBoss();
         Destroy(gameObject);
-        SceneManager.LoadScene(nextLvl);   
+        actionToDie?.Invoke();   
     }
 
 }

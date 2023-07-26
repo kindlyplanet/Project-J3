@@ -1,11 +1,10 @@
-using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class MenuPrincipal : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     public Image blackScreen;
     public float velocityFade;
@@ -60,8 +59,6 @@ public class MenuPrincipal : MonoBehaviour
                 blackScreen.color = new Color(0,0,0,alpha);
                 if (alpha >= 1)
                 {
-                    scoreManager.ResetScore();
-                    AudioManager.Instance.PlayMusic("StageTheme");
                     SceneManager.LoadScene(nameOfLevel);
                     activeEnd = false;
                 }
@@ -83,7 +80,4 @@ public class MenuPrincipal : MonoBehaviour
         Application.Quit();
     }
 
-
-
 }
-

@@ -10,11 +10,10 @@ public class MovementAndAnimation : MonoBehaviour
     public string otherObjectAnimationName; // Nombre de la animación que se verificará para la espera
 
     private int currentWaypointIndex = 0;
-    private Animator animator;
+    private bool hasActivatedObject = false;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
         StartCoroutine(MoveAndActivateObjects());
     }
 
@@ -25,40 +24,41 @@ public class MovementAndAnimation : MonoBehaviour
             Vector3 targetPosition = waypoints[currentWaypointIndex].position;
             Vector3 direction = (targetPosition - transform.position).normalized;
 
-
+            // Mover hacia la posición del waypoint actual
             while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
             {
                 transform.position += direction * moveSpeed * Time.deltaTime;
                 yield return null;
             }
 
-           
-            // Activar el GameObject si se proporcionó uno
-            if (objectToActivate != null)
-                objectToActivate.SetActive(true);
-
-            // Esperar hasta que la animación del otro GameObject termine
-            if (otherObjectAnimator != null && !string.IsNullOrEmpty(otherObjectAnimationName))
+            // Activar el GameObject si se proporcionó uno y aún no se ha activado
+            if (objectToActivate != null && !hasActivatedObject)
             {
-                yield return new WaitForSeconds(0.1f); // Pequeño tiempo de espera para asegurar que la animación del otro objeto comience
+                objectToActivate.SetActive(true);
+                hasActivatedObject = true;
 
-                while (otherObjectAnimator.GetCurrentAnimatorStateInfo(0).IsName(otherObjectAnimationName))
-                {
-                    yield return null;
-                }
-
-                yield return new WaitForSeconds(0.1f); // Pequeño tiempo de espera adicional para asegurar que la animación termine completamente
+                // Esperar unos momentos antes de continuar
+                yield return new WaitForSeconds(1f);
             }
 
-            // Desactivar el GameObject si se proporcionó uno
-            if (objectToActivate != null)
+            // Verificar si el otro objeto tiene animación y se proporcionó un nombre de animación
+            if (otherObjectAnimator != null && !string.IsNullOrEmpty(otherObjectAnimationName))
+            {
+                // Reproducir la animación del otro objeto solo si es el primer waypoint
+                if (currentWaypointIndex == 0)
+                    otherObjectAnimator.Play(otherObjectAnimationName);
+
+                // Esperar a que la animación del otro objeto termine solo si es el primer waypoint
+                if (currentWaypointIndex == 0)
+                    yield return new WaitForSeconds(otherObjectAnimator.GetCurrentAnimatorStateInfo(0).length);
+            }
+
+            // Desactivar el GameObject si se proporcionó uno y se llegó al segundo waypoint
+            if (objectToActivate != null && currentWaypointIndex == 1)
                 objectToActivate.SetActive(false);
 
             // Mover al siguiente waypoint
             currentWaypointIndex++;
-
-            // Esperar antes de continuar al siguiente waypoint
-            yield return new WaitForSeconds(1f);
         }
 
         // Después de llegar a todos los waypoints, el GameObject se desactiva
